@@ -3,10 +3,11 @@
 set -e
 set -x
 
-## sudo apt install gcc g++[gcc] gettext[git] m4[binutils]
-# sudo apt install gcc g++[gcc]
+# sudo apt install python[spack] gcc g++ make[gcc] zip[gcc/java]
+# wget https://raw.githubusercontent.com/eschnett/spack-test/master/spacktest-ubuntu16.sh
+# bash ./spacktest-ubuntu16.sh 2>&1 | tee spacktest.out
 
-installflags="-v -j2"
+installflags="-v"
 
 # Prepare directory
 basedir="/home/eschnett/spacktest"
@@ -16,8 +17,9 @@ mkdir -p "$basedir"
 cd "$basedir"
 
 # Download
+rm -rf "$HOME/.spack"
+rm -rf "/tmp/$USER/spack-stage"
 git clone https://github.com/scalability-llnl/spack.git
-rm -rf /tmp/eschnett/spack-stage
 cd spack
 # git pull
 source share/spack/setup-env.sh
@@ -85,31 +87,49 @@ class Umbrella(Package):
     version('1.2.8', '44d667c142d7cda120332623eab69f40')
 
     depends_on("boost +mpi")
+    depends_on("bzip2")
+    depends_on("cereal")
+    depends_on("cmake")
+    # depends_on("cuda")
+    depends_on("curl")
     depends_on("fftw +mpi +openmp")
     depends_on("git")
     depends_on("gsl")
     depends_on("hdf5 +mpi")
     depends_on("hdf5-blosc")
+    depends_on("hpx5 +mpi")
     depends_on("hwloc")
+    depends_on("hypre")
     depends_on("jemalloc")
-    depends_on("julia")
-    # depends_on("julia +hdf5 +mpi")
+    # depends_on("julia")   # depends_on("julia +hdf5 +mpi")
+    depends_on("libmng")
+    depends_on("libpng")
+    depends_on("libtool")
     depends_on("llvm")
     depends_on("lmod")
+    depends_on("lua")
+    depends_on("mbedtls")
     depends_on("openblas +openmp")
     depends_on("openmpi")
     depends_on("papi")
+    depends_on("parallel")
     depends_on("petsc +boost +hdf5 +mpi")
-    # py-h5py has an install error
-    # depends_on("py-h5py +mpi")
+    depends_on("py-cython")
+    # depends_on("py-h5py +mpi")   # py-h5py has an install error
+    depends_on("py-matplotlib")
     depends_on("py-mpi4py")
+    depends_on("py-nose")
     depends_on("py-numpy")
     depends_on("py-scipy")
-    # Specify version @2.7.12 explicitly to circumvent a concretization bug
-    depends_on("python @2.7.12")
+    depends_on("py-sympy")
+    # depends_on("py-yt")
+    depends_on("python @2.7.12")   # Specify version explicitly to circumvent a concretization bug
     depends_on("qthreads")
+    depends_on("rsync")
+    depends_on("slepc")
     depends_on("swig")
     depends_on("tmux")
+    depends_on("zlib")
 
     def install(self, spec, prefix):
         # This package does not install anything; it only installs its
