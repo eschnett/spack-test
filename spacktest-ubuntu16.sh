@@ -10,9 +10,8 @@ set -x
 installflags="-v"
 
 # Prepare directory
-basedir="/home/eschnett/spacktest"
-rm -rf "$basedir.old"
-mv "$basedir" "$basedir.old" || true
+basedir="$HOME/spacktest"
+rm -rf "$basedir"
 mkdir -p "$basedir"
 cd "$basedir"
 
@@ -90,7 +89,6 @@ class Umbrella(Package):
     depends_on("bzip2")
     depends_on("cereal")
     depends_on("cmake")
-    # depends_on("cuda")
     depends_on("curl")
     depends_on("fftw +mpi +openmp")
     depends_on("git")
@@ -101,11 +99,12 @@ class Umbrella(Package):
     depends_on("hwloc")
     depends_on("hypre")
     depends_on("jemalloc")
-    # depends_on("julia")   # depends_on("julia +hdf5 +mpi")
+    # depends_on("julia")
+    depends_on("julia +hdf5 +mpi")
     depends_on("libmng")
     depends_on("libpng")
     depends_on("libtool")
-    depends_on("llvm")
+    depends_on("llvm ^binutils @2.26")   # llvm fails with binutils@2.25
     depends_on("lmod")
     depends_on("lua")
     depends_on("mbedtls")
@@ -115,20 +114,20 @@ class Umbrella(Package):
     depends_on("parallel")
     depends_on("petsc +boost +hdf5 +mpi")
     depends_on("py-cython")
-    # depends_on("py-h5py +mpi")   # py-h5py has an install error
+    depends_on("py-h5py +mpi")
     depends_on("py-matplotlib")
     depends_on("py-mpi4py")
     depends_on("py-nose")
     depends_on("py-numpy")
     depends_on("py-scipy")
     depends_on("py-sympy")
-    # depends_on("py-yt")
-    depends_on("python @2.7.12")   # Specify version explicitly to circumvent a concretization bug
+    depends_on("python @2.7.12")   # specify version explicitly to circumvent a concretization bug
     depends_on("qthreads")
     depends_on("rsync")
     depends_on("slepc")
     depends_on("swig")
     depends_on("tmux")
+    depends_on("trilinos +python")
     depends_on("zlib")
 
     def install(self, spec, prefix):
@@ -143,7 +142,7 @@ spack install $installflags umbrella %"$compiler"
 spack env lmod
 spack find -p
 spack location -i lmod
-# spack module refresh
+echo y | spack module refresh
 spack reindex
 
 # lmod
@@ -158,7 +157,7 @@ spack view -d true symlink "$basedir/view" umbrella
 # lmod
 lmoddir="$basedir/view"
 # source "$lmoddir/lmod/lmod/init/bash"
-source "$lmoddir/lmod/6.4.1/init/bash"
+source "$lmoddir/lmod/*/init/bash"
 # "module" is broken (a path seems truncated)
 # module avail -l 2>&1
 
