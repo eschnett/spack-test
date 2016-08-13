@@ -112,10 +112,21 @@ class Umbrella(Package):
         mkdirp(prefix.lib)
 EOF
 spack spec umbrella %"$compiler"
-for n in $(seq 1 10); do
-    echo "Calling Spack install, attempt #$n"
-    spack install $installflags umbrella %"$compiler"
-done
+
+echo "Calling Spack install, attempt #1"
+spack install $installflags umbrella %"$compiler" || {
+    echo "Calling Spack install, attempt #2"
+    spack install $installflags umbrella %"$compiler" || {
+        echo "Calling Spack install, attempt #3"
+        spack install $installflags umbrella %"$compiler" || {
+            echo "Calling Spack install, attempt #4"
+            spack install $installflags umbrella %"$compiler" || {
+                echo "Calling Spack install, attempt #5"
+                spack install $installflags umbrella %"$compiler"
+            }
+        }
+    }
+}
 
 # Run some Spack commands
 spack env lmod
