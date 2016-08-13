@@ -47,31 +47,6 @@ EOT
 
 # Install some packages
 
-# spack install $installflags boost +mpi %"$compiler" ^openmpi
-# spack install $installflags fftw +mpi +openmp %"$compiler" ^openmpi
-# spack install $installflags git %"$compiler"
-# spack install $installflags gsl %"$compiler"
-# spack install $installflags hdf5 +mpi %"$compiler" ^openmpi
-# spack install $installflags hdf5-blosc %"$compiler"
-# spack install $installflags hwloc %"$compiler"
-# spack install $installflags jemalloc %"$compiler"
-# # spack install $installflags julia +hdf5 +mpi %"$compiler" ^hdf5+mpi ^openmpi
-# spack install $installflags julia %"$compiler" ^hdf5+mpi ^openmpi
-# spack install $installflags llvm %"$compiler"
-# spack install $installflags lmod %"$compiler"
-# spack install $installflags openblas %"$compiler"
-# spack install $installflags openmpi %"$compiler"
-# spack install $installflags papi %"$compiler"
-# spack install $installflags petsc +boost +hdf5 +mpi %"$compiler" ^boost+mpi ^hdf5+mpi ^openblas ^openmpi
-# spack install $installflags py-h5py +mpi %"$compiler" ^hdf5+mpi ^openmpi ^python
-# spack install $installflags py-mpi4py %"$compiler" ^openmpi ^python
-# spack install $installflags py-numpy %"$compiler" ^openblas ^python
-# spack install $installflags py-scipy %"$compiler" ^openblas ^python
-# spack install $installflags python %"$compiler"
-# spack install $installflags qthreads %"$compiler"
-# spack install $installflags swig %"$compiler"
-# spack install $installflags tmux %"$compiler"
-
 # We create an umbrella pseudo-package to ensure that Spack resolves
 # all dependencies in a self-consistent manner
 umbrelladir="var/spack/repos/builtin/packages/umbrella"
@@ -85,6 +60,7 @@ class Umbrella(Package):
     url = "http://zlib.net/zlib-1.2.8.tar.gz"
     version('1.2.8', '44d667c142d7cda120332623eab69f40')
 
+    depends_on("binutils @2.26")   # llvm dependency doesn't suffice for this
     depends_on("boost +mpi")
     depends_on("bzip2")
     depends_on("cereal")
@@ -97,10 +73,10 @@ class Umbrella(Package):
     depends_on("hdf5-blosc")
     depends_on("hpx5 +mpi")
     depends_on("hwloc")
-    depends_on("hypre")
+    depends_on("hypre ~internal-superlu")   # ~internal-superlu is required, but is not chosen automatically
     depends_on("jemalloc")
-    # depends_on("julia")
-    depends_on("julia +hdf5 +mpi")
+    depends_on("julia")
+    # depends_on("julia +hdf5 +mpi")
     depends_on("libmng")
     depends_on("libpng")
     depends_on("libtool")
@@ -127,7 +103,7 @@ class Umbrella(Package):
     depends_on("slepc")
     depends_on("swig")
     depends_on("tmux")
-    depends_on("trilinos +python")
+    # depends_on("trilinos +python")   # download currently unavailable
     depends_on("zlib")
 
     def install(self, spec, prefix):
@@ -136,7 +112,10 @@ class Umbrella(Package):
         mkdirp(prefix.lib)
 EOF
 spack spec umbrella %"$compiler"
-spack install $installflags umbrella %"$compiler"
+for n in $(seq 1 10); do
+    echo "Calling Spack install, attempt #$n"
+    spack install $installflags umbrella %"$compiler"
+done
 
 # Run some Spack commands
 spack env lmod
