@@ -1,6 +1,7 @@
 # spack-test
 
-Test Spack by installing packages for a typical HPC environment
+Test [Spack](https://github.com/LLNL/spack) by installing packages for
+a typical HPC environment
 
 The current setup uses [Docker](https://www.docker.com) and starts
 from a minimal
