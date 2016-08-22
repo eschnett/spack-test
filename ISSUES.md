@@ -6,7 +6,7 @@ Details unknown; need to investigate.
 
 Might be related to #1487.
 
-##. Fetching packages as part of installing them in unstable
+## Fetching packages as part of installing them is brittle
 
 Fetching packages sometimes fails for spurious reasons. Installing a
 single package succeeds almost always, installing 100 packages in one
@@ -15,8 +15,7 @@ go fails almost always. Spack should be more resilient.
 Work-around: Call `spack fetch -D` several times in a row before
 calling `spack install`.
 
-## Installing a self-consistent set of packages is not directly
-   supported
+## Installing a self-consistent set of packages is not directly supported
 
 Spack can install individual packages and their dependencies, but
 cannot install a set of packages while guaranteeing that they can be
