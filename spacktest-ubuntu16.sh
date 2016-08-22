@@ -26,6 +26,12 @@ source share/spack/setup-env.sh
 # Install gcc
 systemcc="gcc@5.4.0"
 spack spec gcc ~binutils %"$systemcc"
+# Fetching is unstable
+for i in $(seq 1 10); do
+    echo "Fetching gcc, attempt #$i..."
+    spack fetch -D gcc ~binutils %"$systemcc" && break || true
+done
+spack fetch -D gcc ~binutils %"$systemcc"
 spack install $installflags gcc ~binutils %"$systemcc"
 
 # Tell Spack about this gcc
@@ -112,28 +118,21 @@ class Umbrella(Package):
         mkdirp(prefix.lib)
 EOF
 spack spec umbrella %"$compiler"
-
-echo "Calling Spack install, attempt #1"
-spack install $installflags umbrella %"$compiler" || {
-    echo "Calling Spack install, attempt #2"
-    spack install $installflags umbrella %"$compiler" || {
-        echo "Calling Spack install, attempt #3"
-        spack install $installflags umbrella %"$compiler" || {
-            echo "Calling Spack install, attempt #4"
-            spack install $installflags umbrella %"$compiler" || {
-                echo "Calling Spack install, attempt #5"
-                spack install $installflags umbrella %"$compiler"
-            }
-        }
-    }
-}
+# Fetching is unstable
+for i in $(seq 1 10); do
+    echo "Fetching umbrella, attempt #$i..."
+    spack fetch -D umbrella %"$compiler" && break || true
+done
+spack fetch -D umbrella %"$compiler"
+spack install $installflags umbrella %"$compiler"
 
 # Run some Spack commands
 spack env lmod
 spack find -p
 spack location -i lmod
 echo y | spack module refresh
-spack reindex
+# "spack reindex" is broken #1320
+# spack reindex
 
 # lmod
 # lmoddir=$(spack location -i lmod)
@@ -142,7 +141,9 @@ spack reindex
 # module avail -l 2>&1
 
 # spack view
-spack view -d true symlink "$basedir/view" umbrella
+# "spack view symlink" is broken #1293
+# spack view -d true symlink "$basedir/view" umbrella
+spack view -d true hardlink "$basedir/view" umbrella
 
 # lmod
 lmoddir="$basedir/view"
