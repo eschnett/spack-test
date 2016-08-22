@@ -110,7 +110,7 @@ class Umbrella(Package):
     depends_on("slepc")
     depends_on("swig")
     depends_on("tmux")
-    # depends_on("trilinos +python")   # download currently unavailable
+    depends_on("trilinos +python")
     depends_on("zlib")
 
     def install(self, spec, prefix):
