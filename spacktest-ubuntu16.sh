@@ -18,7 +18,7 @@ cd "$basedir"
 # Download
 rm -rf "$HOME/.spack"
 rm -rf "/tmp/$USER/spack-stage"
-git clone https://github.com/scalability-llnl/spack.git
+git clone https://github.com/LLNL/spack.git
 cd spack
 # git pull
 source share/spack/setup-env.sh
