@@ -1,10 +1,12 @@
-1. Installing gcc requires `~binutils`
+# Spack issues encountered during self-tests
+
+## Installing gcc requires `~binutils`
 
 Details unknown; need to investigate.
 
 Might be related to #1487.
 
-2. Fetching packages as part of installing them in unstable
+##. Fetching packages as part of installing them in unstable
 
 Fetching packages sometimes fails for spurious reasons. Installing a
 single package succeeds almost always, installing 100 packages in one
@@ -13,7 +15,7 @@ go fails almost always. Spack should be more resilient.
 Work-around: Call `spack fetch -D` several times in a row before
 calling `spack install`.
 
-3. Installing a self-consistent set of packages is not directly
+## Installing a self-consistent set of packages is not directly
    supported
 
 Spack can install individual packages and their dependencies, but
@@ -26,7 +28,7 @@ packages as dependency, then install this dummy package.
 
 This is discussed somewhere, but I can't recall where.
 
-4. It's not straightforward to make Spack use a Spack-build gcc
+## It's not straightforward to make Spack use a Spack-build gcc
 
 I build gcc with Spack, then want Spack to use this gcc. There is not
 Spack command to add this gcc to Spack's list of compilers.
@@ -35,13 +37,13 @@ Work-around: Directly add the required yaml code to
 "$HOME/.spack/compilers.yaml". This is tedious because it depends on
 system details such as Spack's name for the current operating system.
 
-5. Binutils @2.25 is preferred
+## `binutils @2.25` is preferred
 
 The newest binutils (@2.26) should be the preferred version.
 
 See #1506.
 
-6. Dependency resolution chooses wrong hypre variant
+## Dependency resolution chooses wrong hypre variant
 
 PETSc and Trilinos require `hypre ~internal-superlu`, but Spack's
 dependency resolution does not choose this variant. Instead, Spack
@@ -49,7 +51,7 @@ aborts with an error.
 
 Work-around: Require explicitly `hypre ~internal-superlu`.
 
-7. Python version incorrectly determined
+## Python version incorrectly determined
 
 By itself, Spack tries to install `python @2`. This version does not
 even exist (is not listed in Python's package). The install fails
@@ -57,14 +59,14 @@ because this version cannot be downloaded or does not have a checksum.
 
 Work-around: Require explicitly `python @2.7.12`.
 
-8. `spack reindex` is broken
+## `spack reindex` is broken
 
 `spack reindex` after installing all packages in a straightforward
 manner fails reliably.
 
 See #1320.
 
-9. `spack view symlink` is broken
+## `spack view symlink` is broken
 
 `spack view symlink` does not create symlinks that correspond to
 symlinks. This breaks packages that use symlinks as part of their
@@ -74,7 +76,7 @@ Work-around: Use `spack view hardlink` instead.
 
 See #1293.
 
-10. `spack module` is broken
+## `spack module` is broken
 
 Calling `spack module` produces syntax errors. It seems some paths are
 truncated.
