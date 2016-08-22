@@ -53,11 +53,13 @@ Work-around: Require explicitly `hypre ~internal-superlu`.
 
 * Python version incorrectly determined
 
-By itself, Spack tries to install `python @2`. This version does not
+By itself, Spack tries to install `python @2.7`. This version does not
 even exist (is not listed in Python's package). The install fails
 because this version cannot be downloaded or does not have a checksum.
 
 Work-around: Require explicitly `python @2.7.12`.
+
+See LLNL/spack#1280.
 
 * `spack reindex` is broken
 
@@ -82,3 +84,9 @@ Calling `spack module` produces syntax errors. It seems some paths are
 truncated.
 
 See LLNL/spack#1290.
+
+* Trilinos cannot be downloaded
+
+The Trilinos download server seems down.
+
+See LLNL/spack#1578.

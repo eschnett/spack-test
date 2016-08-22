@@ -140,6 +140,7 @@ echo y | spack module refresh
 # source "$lmoddir/lmod/lmod/init/bash"
 # "module" is broken (a path seems truncated)
 # module avail -l 2>&1
+# module refresh -l 2>&1
 
 # spack view
 # "spack view symlink" is broken #1293
@@ -152,7 +153,12 @@ source "$lmoddir/lmod/lmod/init/bash"
 # source "$lmoddir/lmod/*/init/bash"
 # "module" is broken (a path seems truncated)
 # module avail -l 2>&1
+# module refresh -l 2>&1
 
 # TODO: spack load
+
+# TODO: spack uninstall, including uninstall by hash
+
+# TODO: abort build, then restart Spack
 
 # TODO: Test packages

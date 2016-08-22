@@ -9,5 +9,5 @@ from a minimal
 system image.
 
 The file [ISSUES.md](../master/ISSUES.md) describes Spack
-problems encountered during self-tests, including the issue numbers
+problems encountered during self-tests, including issue numbers
 and work-arounds (if any).
