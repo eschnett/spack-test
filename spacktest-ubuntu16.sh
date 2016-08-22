@@ -25,6 +25,7 @@ source share/spack/setup-env.sh
 
 # Install gcc
 systemcc="gcc@5.4.0"
+# Why `~binutils`?
 spack spec gcc ~binutils %"$systemcc"
 # Fetching is unstable
 for i in $(seq 1 10); do
@@ -147,8 +148,8 @@ spack view -d true hardlink "$basedir/view" umbrella
 
 # lmod
 lmoddir="$basedir/view"
-# source "$lmoddir/lmod/lmod/init/bash"
-source "$lmoddir/lmod/*/init/bash"
+source "$lmoddir/lmod/lmod/init/bash"
+# source "$lmoddir/lmod/*/init/bash"
 # "module" is broken (a path seems truncated)
 # module avail -l 2>&1
 
