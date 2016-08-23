@@ -154,7 +154,8 @@ spack view -d true hardlink "$basedir/view" umbrella
 # lmod
 lmoddir="$basedir/view"
 # source "$lmoddir/lmod/lmod/init/bash"
-source "$lmoddir/lmod/*/init/bash"
+# source "$lmoddir/lmod/*/init/bash"
+source "$lmoddir/lmod/6.4.5/init/bash"
 # "module" is broken (a path seems truncated)
 # module avail -l 2>&1
 # module refresh -l 2>&1
