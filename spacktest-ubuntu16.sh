@@ -49,6 +49,10 @@ cat >> "$HOME/.spack/compilers.yaml" <<EOT
       cxx: $gccpath/bin/g++
       f77: $gccpath/bin/gfortran
       fc: $gccpath/bin/gfortran
+    flags:
+      cflags: -march=native
+      cxxflags: -march=native
+      fflags: -march=native
     spec: $compiler
 EOT
 
