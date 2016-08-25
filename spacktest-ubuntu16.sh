@@ -114,7 +114,7 @@ class Umbrella(Package):
     depends_on("slepc")
     depends_on("swig")
     depends_on("tmux")
-    # depends_on("trilinos +python")   # Trilinos cannot be downloaded
+    depends_on("trilinos +python")
     depends_on("zlib")
 
     depends_on("scalasca")
