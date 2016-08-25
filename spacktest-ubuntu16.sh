@@ -117,6 +117,10 @@ class Umbrella(Package):
     # depends_on("trilinos +python")   # Trilinos cannot be downloaded
     depends_on("zlib")
 
+    depends_on("scalasca")
+    depends_on("scorep")
+    depends_on("tau +scorep")
+
     def install(self, spec, prefix):
         # This package does not install anything; it only installs its
         # dependencies
@@ -167,3 +171,5 @@ source "$lmoddir/lmod/6.4.5/init/bash"
 # TODO: abort build, then restart Spack
 
 # TODO: Test packages
+
+echo 'Done.'
