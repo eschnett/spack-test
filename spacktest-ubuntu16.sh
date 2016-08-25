@@ -37,8 +37,8 @@ spack install $installflags gcc ~binutils %"$systemcc"
 
 # Tell Spack about this gcc
 osname="Ubuntu16"
-gccpath=$(spack find -p 'gcc@6.1.0' | awk '/ gcc.*@/ { print $2; }')
-compiler="gcc@6.1.0-spacktest"
+gccpath=$(spack find -p 'gcc@6.2.0' | awk '/ gcc.*@/ { print $2; }')
+compiler="gcc@6.2.0-spacktest"
 spack compiler remove "$compiler" || true
 cat >> "$HOME/.spack/compilers.yaml" <<EOT
 - compiler:
