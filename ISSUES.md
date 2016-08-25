@@ -34,12 +34,12 @@ I build gcc with Spack, then want Spack to use this gcc. There is not
 Spack command to add this gcc to Spack's list of compilers.
 
 Work-around: Directly add the required yaml code to
-"$HOME/.spack/compilers.yaml". This is tedious because it depends on
+`$HOME/.spack/compilers.yaml`. This is tedious, and it depends on
 system details such as Spack's name for the current operating system.
 
 * `binutils @2.25` is preferred
 
-The newest binutils (@2.26) should be the preferred version.
+The newest binutils (`@2.26`) should be the preferred version.
 
 See LLNL/spack#1506.
 
