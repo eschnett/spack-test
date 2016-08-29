@@ -117,9 +117,10 @@ class Umbrella(Package):
     depends_on("trilinos +python")
     depends_on("zlib")
 
-    depends_on("scalasca")
-    depends_on("scorep")
-    depends_on("tau +scorep")
+    # depends_on("scalasca")      # requires scorep
+    # depends_on("scorep")        # install problem with shmem
+    # depends_on("tau +scorep")   # requires scorep
+    depends_on("tau")
 
     def install(self, spec, prefix):
         # This package does not install anything; it only installs its
