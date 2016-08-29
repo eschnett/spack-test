@@ -120,7 +120,7 @@ class Umbrella(Package):
     # depends_on("scalasca")      # requires scorep
     # depends_on("scorep")        # install problem with shmem
     # depends_on("tau +scorep")   # requires scorep
-    depends_on("tau")
+    # depends_on("tau")   # install problems
 
     def install(self, spec, prefix):
         # This package does not install anything; it only installs its
