@@ -27,7 +27,7 @@ dependencies.
 Work-around: Create a dummy "umbrella" packages with all desired
 packages as dependency, then install this dummy package.
 
-This is discussed somewhere, but I can't recall where.
+Compare [LLNL/spack#1603](https://github.com/LLNL/spack/pull/1603).
 
 * It's not straightforward to make Spack use a Spack-build gcc
 
@@ -85,9 +85,3 @@ Calling `spack module` produces syntax errors. It seems some paths are
 truncated.
 
 See [LLNL/spack#1290](https://github.com/LLNL/spack/issues/1290).
-
-* Trilinos cannot be downloaded
-
-The Trilinos download server seems down.
-
-See [LLNL/spack#1578](https://github.com/LLNL/spack/issues/1578).
