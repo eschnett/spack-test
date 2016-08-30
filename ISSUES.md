@@ -4,7 +4,8 @@
 
 Details unknown; need to investigate.
 
-Might be related to LLNL/spack#1487.
+Might be related to
+[LLNL/spack#1487](https://github.com/LLNL/spack/issues/1487).
 
 * Fetching packages as part of installing them is brittle
 
@@ -41,7 +42,7 @@ system details such as Spack's name for the current operating system.
 
 The newest binutils (`@2.26`) should be the preferred version.
 
-See LLNL/spack#1506.
+See [LLNL/spack#1506](https://github.com/LLNL/spack/issues/1506).
 
 * Dependency resolution chooses wrong hypre variant
 
@@ -59,14 +60,14 @@ because this version cannot be downloaded or does not have a checksum.
 
 Work-around: Require explicitly `python @2.7.12`.
 
-See LLNL/spack#1280.
+See [LLNL/spack#1280](https://github.com/LLNL/spack/issues/1280).
 
 * `spack reindex` is broken
 
 `spack reindex` after installing all packages in a straightforward
 manner fails reliably.
 
-See LLNL/spack#1320.
+See [LLNL/spack#1320](https://github.com/LLNL/spack/issues/1320).
 
 * `spack view symlink` is broken
 
@@ -76,17 +77,17 @@ install, including `lmod`, and most shared libraries.
 
 Work-around: Use `spack view hardlink` instead.
 
-See LLNL/spack#1293.
+See [LLNL/spack#1293](https://github.com/LLNL/spack/issues/1293).
 
 * `spack module` is broken
 
 Calling `spack module` produces syntax errors. It seems some paths are
 truncated.
 
-See LLNL/spack#1290.
+See [LLNL/spack#1290](https://github.com/LLNL/spack/issues/1290).
 
 * Trilinos cannot be downloaded
 
 The Trilinos download server seems down.
 
-See LLNL/spack#1578.
+See [LLNL/spack#1578](https://github.com/LLNL/spack/issues/1578).
