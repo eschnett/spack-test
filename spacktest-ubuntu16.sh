@@ -16,7 +16,7 @@ mkdir -p "$basedir"
 cd "$basedir"
 
 # Get updated SSL certificates
-curl -O http://curl.haxx.se/ca/cacert.pem
+curl -O https://curl.haxx.se/ca/cacert.pem
 export CURL_CA_BUNDLE="$(pwd)/cacert.pem"
 
 # Download
