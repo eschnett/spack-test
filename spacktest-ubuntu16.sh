@@ -15,6 +15,10 @@ rm -rf "$basedir"
 mkdir -p "$basedir"
 cd "$basedir"
 
+# Get updated SSL certificates
+curl -O http://curl.haxx.se/ca/cacert.pem
+export CURL_CA_BUNDLE="$(pwd)/cacert.pem"
+
 # Download
 rm -rf "$HOME/.spack"
 rm -rf "/tmp/$USER/spack-stage"
@@ -121,6 +125,8 @@ class Umbrella(Package):
     # depends_on("scorep")        # install problem with shmem
     # depends_on("tau +scorep")   # requires scorep
     # depends_on("tau")   # install problems
+
+    # add adios
 
     def install(self, spec, prefix):
         # This package does not install anything; it only installs its
