@@ -83,6 +83,7 @@ class Umbrella(Package):
     depends_on("curl")
     depends_on("fftw +mpi +openmp")
     depends_on("git")
+    depends_on("gmp @6.0.0")   # julia installs gmp @6.0.0 which leads to a conflict
     depends_on("gsl")
     depends_on("hdf5 +mpi")
     depends_on("hdf5-blosc")
@@ -126,7 +127,8 @@ class Umbrella(Package):
     # depends_on("tau +scorep")   # requires scorep
     # depends_on("tau")   # install problems
 
-    # add adios
+    # depends_on("adios +fortran +hdf5")   # install problem
+    # depends_on("adios +fortran")   # install problem
 
     def install(self, spec, prefix):
         # This package does not install anything; it only installs its
