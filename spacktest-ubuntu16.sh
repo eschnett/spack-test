@@ -15,9 +15,9 @@ rm -rf "$basedir"
 mkdir -p "$basedir"
 cd "$basedir"
 
-# Get updated SSL certificates
-curl -O https://curl.haxx.se/ca/cacert.pem
-export CURL_CA_BUNDLE="$(pwd)/cacert.pem"
+# # Get updated SSL certificates
+# curl -O https://curl.haxx.se/ca/cacert.pem
+# export CURL_CA_BUNDLE="$(pwd)/cacert.pem"
 
 # Download
 rm -rf "$HOME/.spack"
