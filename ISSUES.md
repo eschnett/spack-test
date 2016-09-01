@@ -69,6 +69,8 @@ manner fails reliably.
 
 See [LLNL/spack#1320](https://github.com/LLNL/spack/issues/1320).
 
+TODO: Check whether it works now.
+
 * `spack view symlink` is broken
 
 `spack view symlink` does not create symlinks that correspond to
@@ -85,3 +87,18 @@ Calling `spack module` produces syntax errors. It seems some paths are
 truncated.
 
 See [LLNL/spack#1290](https://github.com/LLNL/spack/issues/1290).
+
+* `-march=native` does not work
+
+Some packages (which? why?) don't build if we explicitly pass
+`-march=native` to GCC for the C, C++, and Fortran compilers.
+
+* Spack puts installed libraries too early in include path
+
+Julia installs its own `gmp @6.0.0`, and this leads to problems when
+Spack has installed `gmp @6.1.1`, as their header files are
+incompatible.
+
+See [LLNL/spack#1380](https://github.com/LLNL/spack/issues/1380).
+
+Note also that Julia should not install its own gmp anyway.
