@@ -28,6 +28,7 @@ cd spack
 source share/spack/setup-env.sh
 
 # Apply patches
+# llvm/spack#1686
 patch -p1 <<EOF
 --- old/var/spack/repos/builtin/packages/fontconfig/package.py
 +++ new/var/spack/repos/builtin/packages/fontconfig/package.py
@@ -39,6 +40,17 @@ patch -p1 <<EOF
  
      def install(self, spec, prefix):
          configure("--prefix=%s" % prefix, "--enable-libxml2")
+EOF
+# llvm/spack#1694
+patch -p1 <<EOF
+--- old/var/spack/repos/builtin/packages/ImageMagick/package.py
++++ new/var/spack/repos/builtin/packages/ImageMagick/package.py
+@@ -50,5 +50,4 @@ class Fontconfig(Package):
+         configure('--prefix={0}'.format(prefix))
+ 
+         make()
+-        make('check')
+         make('install')
 EOF
 
 # Install gcc
