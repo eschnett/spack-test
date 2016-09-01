@@ -27,6 +27,20 @@ cd spack
 # git pull
 source share/spack/setup-env.sh
 
+# Apply patches
+patch -p1 <<EOF
+--- old/var/spack/repos/builtin/packages/fontconfig/package.py
++++ new/var/spack/repos/builtin/packages/fontconfig/package.py
+@@ -34,6 +34,7 @@ class Fontconfig(Package):
+ 
+     depends_on('freetype')
+     depends_on('libxml2')
++    depends_on('pkg-config', type='build')
+ 
+     def install(self, spec, prefix):
+         configure("--prefix=%s" % prefix, "--enable-libxml2")
+EOF
+
 # Install gcc
 systemcc="gcc@5.4.0"
 # Why `~binutils`?
