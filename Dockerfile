@@ -5,6 +5,8 @@ RUN apt update && apt install -y curl git lbzip2 python xz-utils gcc g++ make zi
 RUN useradd -m spacktest
 USER spacktest
 WORKDIR /home/spacktest
+COPY /ImageMagick.patch ./
+COPY /fontconfig.patch ./
+COPY /qthreads.patch ./
 COPY /spacktest-ubuntu16.sh ./
-COPY /*.patch ./
 CMD ./spacktest-ubuntu16.sh 2>&1 | tee spacktest.out
