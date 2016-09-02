@@ -24,6 +24,8 @@ rm -rf "$HOME/.spack"
 rm -rf "/tmp/$USER/spack-stage"
 git clone https://github.com/LLNL/spack.git
 cd spack
+# Output git version
+git rev-parse HEAD
 # git pull
 source share/spack/setup-env.sh
 
