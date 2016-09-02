@@ -1,0 +1,10 @@
+--- old/var/spack/repos/builtin/packages/fontconfig/package.py
++++ new/var/spack/repos/builtin/packages/fontconfig/package.py
+@@ -54,6 +54,7 @@ class Fontconfig(Package):
+     patch("trap.patch")
+ 
+     depends_on("autoconf", type="build")
++    depends_on("automake", type="build")
+     depends_on("hwloc")
+ 
+     def install(self, spec, prefix):
