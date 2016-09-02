@@ -28,9 +28,9 @@ cd spack
 source share/spack/setup-env.sh
 
 # Apply patches
-patch -p1 <../fontconfig.patch     # llvm/spack#1686
-patch -p1 <../ImageMagick.patch    # llvm/spack#1694
-patch -p1 <../qthreads.patch       # llvm/spack#1711
+patch -p1 <"$HOME/fontconfig.patch"  # llvm/spack#1686
+patch -p1 <"$HOME/ImageMagick.patch" # llvm/spack#1694
+patch -p1 <"$HOME/qthreads.patch"    # llvm/spack#1711
 
 # Install gcc
 systemcc="gcc@5.4.0"
