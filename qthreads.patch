@@ -1,6 +1,6 @@
---- old/var/spack/repos/builtin/packages/fontconfig/package.py
-+++ new/var/spack/repos/builtin/packages/fontconfig/package.py
-@@ -54,6 +54,7 @@ class Fontconfig(Package):
+--- old/var/spack/repos/builtin/packages/qthreads/package.py
++++ new/var/spack/repos/builtin/packages/qthreads/package.py
+@@ -54,6 +54,7 @@ class Qthreads(Package):
      patch("trap.patch")
  
      depends_on("autoconf", type="build")

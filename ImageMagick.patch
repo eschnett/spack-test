@@ -1,6 +1,6 @@
 --- old/var/spack/repos/builtin/packages/ImageMagick/package.py
 +++ new/var/spack/repos/builtin/packages/ImageMagick/package.py
-@@ -50,5 +50,4 @@ class Fontconfig(Package):
+@@ -50,5 +50,4 @@ class Imagemagick(Package):
          configure('--prefix={0}'.format(prefix))
  
          make()
