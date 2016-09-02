@@ -6,4 +6,5 @@ RUN useradd -m spacktest
 USER spacktest
 WORKDIR /home/spacktest
 COPY /spacktest-ubuntu16.sh ./
+COPY /*.patch ./
 CMD ./spacktest-ubuntu16.sh 2>&1 | tee spacktest.out
