@@ -62,15 +62,6 @@ Work-around: Require explicitly `python @2.7.12`.
 
 See [LLNL/spack#1280](https://github.com/LLNL/spack/issues/1280).
 
-* `spack reindex` is broken
-
-`spack reindex` after installing all packages in a straightforward
-manner fails reliably.
-
-See [LLNL/spack#1320](https://github.com/LLNL/spack/issues/1320).
-
-TODO: Check whether it works now.
-
 * `spack view symlink` is broken
 
 `spack view symlink` does not create symlinks that correspond to

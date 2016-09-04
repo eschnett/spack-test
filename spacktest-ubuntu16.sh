@@ -154,7 +154,6 @@ spack env lmod
 spack find -p
 spack location -i lmod
 echo y | spack module refresh
-# "spack reindex" is broken #1320
 spack reindex
 
 # lmod
